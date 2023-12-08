@@ -1,11 +1,7 @@
-const notFound = (req, res) => {
-  res.status(404).json({
-    success: false,
-    error: {
-      status: 404,
-      message: "Not Found!."
-    }
-  });
+const customError = require("../error-handling/customError");
+
+const notFound = (req, res, next) => {
+  next(customError(`no route match with ${req.url}`, 500));
 }
 
 module.exports = notFound;
