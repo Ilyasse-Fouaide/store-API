@@ -1,0 +1,25 @@
+{
+  "name": "store-api",
+  "version": "1.0.0",
+  "description": "simple store api built with nodeJs, expressJs, mongoDB",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ilyasse-Fouaide/store-API.git"
+  },
+  "keywords": [
+    "expressJs",
+    "nodeJs",
+    "MongoDB",
+    "storeAPI"
+  ],
+  "author": "Ilyasse Fouaide <ilyasse.fouaide@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ilyasse-Fouaide/store-API/issues"
+  },
+  "homepage": "https://github.com/Ilyasse-Fouaide/store-API#readme"
+}
