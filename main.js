@@ -9,8 +9,10 @@ const app = express();
 
 // routes
 app.use("/api/v1/products", router);
+// not found route
 app.use(notFound);
 
+// error handler middleware that catch all the errors coming from the endpoints 
 app.use(errorHandler);
 
 // set up the server
