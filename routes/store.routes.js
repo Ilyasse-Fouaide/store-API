@@ -1,10 +1,9 @@
 const express = require("express");
+const store = require("../controllers/store.controller");
 
 const router = express.Router();
 
 router.route("/")
-  .get((req, res) => {
-    res.status(200).json({ message: "Welcome to the API" });
-  })
+  .get(store.index);
 
 module.exports = router

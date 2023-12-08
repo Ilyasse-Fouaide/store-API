@@ -7,7 +7,9 @@ dotenv.config();
 
 const app = express();
 
+// routes
 app.use("/api/v1/store", router);
 
+// set up the server
 const port = process.env.PORT || 5001;
 app.listen(port, () => console.log(`Listening to the port ${port}...`));
