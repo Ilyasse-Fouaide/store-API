@@ -1,12 +1,8 @@
 const mongoose = require('mongoose');
 const config = require('../config/config');
 
-const connect = async () => {
-  try {
-    await mongoose.connect(config.MONGO_URI);
-  } catch (error) {
-    throw new Error(error);
-  }
+const connect = () => {
+  return mongoose.connect(config.MONGO_URI);
 }
 
 module.exports = connect;
