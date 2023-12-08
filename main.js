@@ -1,11 +1,12 @@
 const express = require("express");
-const dotenv = require("dotenv");
 const router = require("./routes/store.routes");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
+const config = require("./config/config");
+const connect = require("./db/connect");
 
-// load .env variable environment
-dotenv.config();
+// connect to the mongo database
+connect();
 
 const app = express();
 
@@ -16,5 +17,5 @@ app.use(notFound);
 app.use(errorHandler);
 
 // set up the server
-const port = process.env.PORT || 5001;
+const port = config.PORT || 5001;
 app.listen(port, () => console.log(`Listening to the port ${port}...`));
