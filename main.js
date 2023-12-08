@@ -1,5 +1,5 @@
 const express = require("express");
-const router = require("./routes/product.routes");
+const productRouter = require("./routes/product.routes");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 const config = require("./config/config");
@@ -8,7 +8,7 @@ const connect = require("./db/connect");
 const app = express();
 
 // routes
-app.use("/api/v1/products", router);
+app.use("/api/v1/products", productRouter);
 // not found route
 app.use(notFound);
 
