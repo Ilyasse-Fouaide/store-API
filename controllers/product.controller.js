@@ -51,16 +51,12 @@ module.exports.index = tryCatchWrapper(async (req, res, next) => {
     filters = filters.split(",").map((item) => {
       const [key, op, value] = item.split("-");
       if (['price', 'rating'].includes(key)) {
-        return { [key]: { [op]: value } }
+        query[key] = { [op]: value }
       }
-      return 'not match'
-    })
-
-    // Log the transformed filter string
-    console.log(filters);
+    });
   }
 
-
+  console.log(numericFilter);
 
   const skip = (page - 1) * limit;
 
