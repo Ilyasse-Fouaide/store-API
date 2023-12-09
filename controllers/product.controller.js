@@ -34,11 +34,14 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
     ]
   }
 
+  const skip = (page - 1) * limit;
+
   const products = await Product
     .find(query)
     .limit(limit ? limit : null)
     .sort(sort ? sort.split(",").join(" ") : 'createdAt')
-    .select(select ? select.split(",").join(" ") : "-__v");
+    .select(select ? select.split(",").join(" ") : "-__v")
+    .skip(skip);
 
   // ! ********* or u can use this method instead **********
   // let results = Product.find(query);
