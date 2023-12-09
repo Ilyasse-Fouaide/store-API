@@ -3,7 +3,7 @@ const Product = require("../models/product.model");
 const data = require("../data");
 
 module.exports.index = tryCatchWrapper(async (req, res) => {
-  const { features, company, search, limit } = req.query;
+  const { features, company, search, limit, sort } = req.query;
 
   const query = {}
 
@@ -19,7 +19,11 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
     query.name = { $regex: search, $options: 'i' }
   }
 
-  const products = await Product.find(query, { __v: 0 }, { limit });
+  const products = await Product
+    .find(query)
+    .limit(limit ? limit : null)
+    .sort(sort ? sort : null)
+    .select({ __v: 0 });  // projection
 
   res.status(200).json({
     success: true,
