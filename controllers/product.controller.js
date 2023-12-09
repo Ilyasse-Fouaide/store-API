@@ -4,7 +4,7 @@ const data = require("../data");
 
 module.exports.index = tryCatchWrapper(async (req, res) => {
   const { features, company, rating, price, search, sort, select } = req.query;
-  const limit = req.query.limit || 4;
+  const limit = parseInt(req.query.limit) || 4;
 
   const query = {}
 
@@ -35,7 +35,7 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
 
   const products = await Product
     .find(query)
-    .limit(limit ? parseInt(limit) : null)
+    .limit(limit ? limit : null)
     .sort(sort ? sort.split(",").join(" ") : 'createdAt')
     .select(select ? select.split(",").join(" ") : "-__v");
 
