@@ -19,8 +19,8 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
     // find({ $or: [{query}, {query}] });
     // then the query object must be object: { ..., $or: [{}, {}] } 
     query.$or = [
-      { $name: { $regex: search, $options: "i" } },
-      { $company: { $regex: search, $options: "i" } },
+      { name: { $regex: search, $options: "i" } },
+      { company: { $regex: search, $options: "i" } },
     ]
   }
 
