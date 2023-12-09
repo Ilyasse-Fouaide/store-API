@@ -38,6 +38,27 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
     .sort(sort ? sort.split(",").join(" ") : 'createdAt')
     .select(select ? select.split(",").join(" ") : "-__v");
 
+  // ! ********* or u can use this method instead **********
+  // let results = Product.find(query);
+
+  // if (limit) {
+  //   results.limit(parseInt(limit));
+  // }
+
+  // if (sort) {
+  //   results.sort(sort.split(",").join(" "));
+  // } else {
+  //   results.sort({ createdAt: -1 });
+  // }
+
+  // if (select) {
+  //   results.select(select.split(",").join(" "));
+  // } else {
+  //   results.select("-__v")
+  // }
+
+  // const products = await results;
+
   res.status(200).json({
     success: true,
     pagination: {
