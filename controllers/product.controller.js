@@ -67,7 +67,8 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
   res.status(200).json({
     success: true,
     pagination: {
-      total: products.length
+      total: products.length,
+      currentPage: page,
     },
     products
   });
