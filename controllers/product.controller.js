@@ -16,7 +16,12 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
   }
 
   if (search) {
-    query.name = { $regex: search, $options: 'i' }
+    // find({ $or: [{query}, {query}] });
+    // then the query object must be object: { ..., $or: [{}, {}] } 
+    query.$or = [
+      { $name: { $regex: search, $options: "i" } },
+      { $company: { $regex: search, $options: "i" } },
+    ]
   }
 
   const products = await Product
