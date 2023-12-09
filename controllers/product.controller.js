@@ -1,11 +1,16 @@
 const tryCatchWrapper = require("../middleware/tryCatchWrapper");
 const Product = require("../models/product.model");
 const data = require("../data");
+const customError = require("../error-handling/customError");
 
-module.exports.index = tryCatchWrapper(async (req, res) => {
+module.exports.index = tryCatchWrapper(async (req, res, next) => {
+  const defaultLimit = 4;
+  const defaultPage = 1;
+
   const { features, company, rating, price, search, sort, select } = req.query;
-  const limit = parseInt(req.query.limit) || 4;
-  const page = parseInt(req.query.page) || 1;
+
+  const limit = parseInt(req.query.limit) || defaultLimit;
+  const page = parseInt(req.query.page) || defaultPage;
 
   const query = {}
 
@@ -45,6 +50,10 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
 
   // get total documents in the Product collection 
   const count = await Product.countDocuments();
+
+  if (limit > 4) {
+    return next(customError(`the limit number you passed: '${limit}' is higher than expected, the max limit number is '${defaultLimit}'`, 400))
+  }
 
   res.status(200).json({
     success: true,
