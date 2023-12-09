@@ -16,11 +16,11 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
   }
 
   if (rating) {
-    query.rating = { $gte: rating }
+    query.rating = { $gte: Number(rating) }
   }
 
   if (price) {
-    query.price = { $gte: price };
+    query.price = { $gte: Number(price) };
   }
 
   if (search) {
