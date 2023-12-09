@@ -5,7 +5,7 @@ const tryCatchWrapper = (cb) => {
     try {
       await cb(res, req, next);
     } catch (error) {
-      next(customError('Something Broke!.', 500));
+      next(customError(error, 500));
     }
   }
 };
