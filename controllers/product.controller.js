@@ -51,9 +51,10 @@ module.exports.index = tryCatchWrapper(async (req, res, next) => {
   // get total documents in the Product collection 
   const count = await Product.countDocuments();
 
-  if (limit > 4) {
-    return next(customError(`the limit number you passed: '${limit}' is higher than expected, the max limit number is '${defaultLimit}'`, 400))
+  if (limit > defaultLimit) {
+    return next(customError(`the limit number you passed: '${limit}' is higher than expected, the max limit number is '${defaultLimit}'.`, 400));
   }
+
 
   res.status(200).json({
     success: true,
