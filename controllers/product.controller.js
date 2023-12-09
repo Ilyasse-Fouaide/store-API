@@ -53,10 +53,9 @@ module.exports.index = tryCatchWrapper(async (req, res, next) => {
       if (['price', 'rating'].includes(key)) {
         query[key] = { [op]: value }
       }
+      return null
     });
   }
-
-  console.log(query);
 
   const skip = (page - 1) * limit;
 
