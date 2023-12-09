@@ -3,7 +3,14 @@ const Product = require("../models/product.model");
 const data = require("../data");
 
 module.exports.index = tryCatchWrapper(async (req, res) => {
-  res.status(200).json({ message: "Welcome to the API" });
+  const products = await Product.find();
+  res.status(200).json({
+    success: true,
+    pagination: {
+      total: products.length
+    },
+    products
+  });
 });
 
 module.exports.store = tryCatchWrapper(async (req, res, next) => {
