@@ -46,7 +46,15 @@ module.exports.index = tryCatchWrapper(async (req, res, next) => {
     const regEx = /\b(>|>=|<|<=|=)\b/g;
 
     // Replace each matched operator in the numeric filter with its MongoDB equivalent
-    const filters = numericFilter.replace(regEx, (substring) => ` ${operators[substring]} `);
+    let filters = numericFilter.replace(regEx, (substring) => `-${operators[substring]}-`);
+
+    filters = filters.split(",").map((item) => {
+      const [key, op, value] = item.split("-");
+      if (['price', 'rating'].includes(key)) {
+        return { [key]: { [op]: value } }
+      }
+      return 'not match'
+    })
 
     // Log the transformed filter string
     console.log(filters);
