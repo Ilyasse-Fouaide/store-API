@@ -3,7 +3,7 @@ const Product = require("../models/product.model");
 const data = require("../data");
 
 module.exports.index = tryCatchWrapper(async (req, res) => {
-  const { features, company, rating, search, limit, sort } = req.query;
+  const { features, company, rating, price, search, limit, sort } = req.query;
 
   const query = {}
 
@@ -17,6 +17,10 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
 
   if (rating) {
     query.rating = { $gte: rating }
+  }
+
+  if (price) {
+    query.price = { $gte: price };
   }
 
   if (search) {
