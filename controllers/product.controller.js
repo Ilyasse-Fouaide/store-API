@@ -35,7 +35,7 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
   const products = await Product
     .find(query)
     .limit(limit ? parseInt(limit) : null)
-    .sort(sort ? sort : null)
+    .sort(sort ? sort.split(",").join(" ") : 'createdAt')
     .select({ __v: 0 });  // projection
 
   res.status(200).json({
