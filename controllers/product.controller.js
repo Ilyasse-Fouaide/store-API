@@ -43,6 +43,23 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
     .select(select ? select.split(",").join(" ") : "-__v")
     .skip(skip);
 
+  // get total documents in the Product collection 
+  const count = await Product.countDocuments();
+
+  res.status(200).json({
+    success: true,
+    pagination: {
+      currentPage: page,
+      totalPages: Math.ceil(count / limit),
+      items: {
+        count: products.length,
+        totalDocument: count,
+        per_page: limit
+      }
+    },
+    products
+  });
+
   // ! ********* or u can use this method instead **********
   // let results = Product.find(query);
 
@@ -63,15 +80,6 @@ module.exports.index = tryCatchWrapper(async (req, res) => {
   // }
 
   // const products = await results;
-
-  res.status(200).json({
-    success: true,
-    pagination: {
-      total: products.length,
-      currentPage: page,
-    },
-    products
-  });
 });
 
 module.exports.store = tryCatchWrapper(async (req, res, next) => {
