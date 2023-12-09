@@ -5,6 +5,7 @@ const data = require("../data");
 module.exports.index = tryCatchWrapper(async (req, res) => {
   const { features, company, rating, price, search, sort, select } = req.query;
   const limit = parseInt(req.query.limit) || 4;
+  const page = parseInt(req.query.page) || 1;
 
   const query = {}
 
