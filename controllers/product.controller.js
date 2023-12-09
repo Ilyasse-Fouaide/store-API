@@ -7,7 +7,7 @@ module.exports.index = tryCatchWrapper(async (req, res, next) => {
   const defaultLimit = 4;
   const defaultPage = 1;
 
-  const { features, company, rating, price, search, sort, select } = req.query;
+  const { features, company, search, sort, select, numericFilter } = req.query;
 
   const limit = parseInt(req.query.limit) || defaultLimit;
   const page = parseInt(req.query.page) || defaultPage;
@@ -22,14 +22,6 @@ module.exports.index = tryCatchWrapper(async (req, res, next) => {
     query.company = company
   }
 
-  if (rating) {
-    query.rating = { $gte: Number(rating) }
-  }
-
-  if (price) {
-    query.price = { $gte: Number(price) };
-  }
-
   if (search) {
     // find({ $or: [{query}, {query}] });
     // then the query object must be object: { ..., $or: [{}, {}] } 
@@ -38,6 +30,29 @@ module.exports.index = tryCatchWrapper(async (req, res, next) => {
       { company: { $regex: search, $options: "i" } },
     ]
   }
+
+  // Check if a numeric filter is provided
+  if (numericFilter) {
+    // Define a mapping of comparison operators to MongoDB operators
+    const operators = {
+      '>': '$gt',
+      '>=': '$gte',
+      '<': '$lt',
+      '<=': '$lte',
+      '=': '$eq',
+    };
+
+    // Define a regular expression to match comparison operators in the numeric filter
+    const regEx = /\b(>|>=|<|<=|=)\b/g;
+
+    // Replace each matched operator in the numeric filter with its MongoDB equivalent
+    const filters = numericFilter.replace(regEx, (substring) => ` ${operators[substring]} `);
+
+    // Log the transformed filter string
+    console.log(filters);
+  }
+
+
 
   const skip = (page - 1) * limit;
 
