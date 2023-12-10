@@ -4,7 +4,7 @@ const data = require("../data");
 const customError = require("../error-handling/customError");
 
 module.exports.index = tryCatchWrapper(async (req, res, next) => {
-  const defaultLimit = 4;
+  const defaultLimit = 25;
   const defaultPage = 1;
 
   const { features, company, search, sort, select, numericFilter } = req.query;
