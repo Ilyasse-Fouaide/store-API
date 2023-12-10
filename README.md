@@ -5,7 +5,7 @@ This api is built with NodeJS, ExpressJS, MongoDB. It enables to make an advance
 This documentation describes how to request data from the API and how to interpret the response.
 
 ### Product Base URL
-> **_`GET`_** `http://localhost:5000/api/v1/products`
+**_`GET`_** `http://localhost:5000/api/v1/products`
 
 *Responses:*
 
@@ -70,15 +70,15 @@ By default the limit number of the response is `25` if the given query is higher
 
 ### Examples
 Get all products matching `bra`
-> `/api/v1/products?search=bra...`
+`/api/v1/products?search=bra...`
 
 Get all product that have _price_ `<` _500_ ◽ _rating_ `=>` _4_.  
 _you can filter with **numericFilter=...**_
 
-> `/api/v1/products?search=bra&numericFilter=price<50,rating>=4...`
+`/api/v1/products?search=bra&numericFilter=price<50,rating>=4...`
 
 Select query:
-> `/api/v1/products?select=name,price...`
+`/api/v1/products?select=name,price...`
 
 ```ts
 {
