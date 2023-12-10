@@ -1,6 +1,6 @@
 # Store API
 
-This api is built with NodeJS, ExpressJS, MongoDB. It enables to make an advanced filtering using a **_REST API_**
+This api is built with NodeJS, ExpressJS, MongoDB. It enables to make an advanced filtering using a **_REST API_**.
 
 This documentation describes how to request data from the API and how to interpret the response.
 
@@ -77,12 +77,12 @@ Get all products matching `bra`
 Get all product that have _price_ `<` _500_ ◽ _rating_ `=>` _4_.  
 _you can filter with **numericFilter=...**_
 
-```
+```bash
 /api/v1/products?search=bra&numericFilter=price<50,rating>=4...
 ```
 
 Select query:
-```
+```bash
 /api/v1/products?select=name,price...
 ```
 
