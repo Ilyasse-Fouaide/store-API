@@ -43,7 +43,7 @@ module.exports.index = tryCatchWrapper(async (req, res, next) => {
     };
 
     // Define a regular expression to match comparison operators in the numeric filter
-    const regEx = /(>|>=|<|<=|=)/g;
+    const regEx = /\b(>|>=|<|<=|=)\b/g;
 
     // Replace each matched operator in the numeric filter with its MongoDB equivalent
     let filters = numericFilter.replace(regEx, (substring) => `-${operators[substring]}-`);
