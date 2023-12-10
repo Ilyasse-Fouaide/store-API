@@ -6,7 +6,6 @@ This api is built with NodeJS, ExpressJS, MongoDB. It enables to make an advance
 
 - [Introduction](#introduction)
 - [Installation](#installation)
-- [Usage](#usage)
 - [API Endpoint](#api-endpoint)
 - [Dependencies](#dependencies)
 
@@ -123,4 +122,8 @@ _e.g, Response:_
   }
 }
 ```
-
+## Dependencies
+- nodemon
+- dotenv
+- express
+- mongoose
