@@ -58,7 +58,7 @@ This documentation describes how to request data from the API and how to interpr
 | `search=`  | Search with product `name` _or_ `company`| _String_  |
 | `features=`| N/A                         | _Boolean_ |
 | `company=` | Filter on specific company.<br /> _enum:_<br />_`ikea`_<br /> _`liddy`_<br />_`caressa`_<br />_`marcos`_| _Boolean_  |
-| `numericFilter=`| filter on a specific numerical condition (<, <=, =, > or >=).<br /> Available on:<br />`price`<br /> `rating`| _Boolean_  |
+| `numericFilter=`| filter on a specific numerical condition (<, <=, =, > or >=).<br /> Available on:<br />`price`<br /> `rating`| _String_  |
 | `limit=`   | Limit the response number   | _Number_  |
 | `page=`    | Page Number                 | _Number_  |
 | `select=`  | N/A                         | _String_  |
