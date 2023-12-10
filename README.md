@@ -2,9 +2,34 @@
 
 This api is built with NodeJS, ExpressJS, MongoDB. It enables to make an advanced filtering using a **_REST API_**.
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoint](#api-endpoint)
+- [Dependencies](#dependencies)
+
+## Introduction
+Small project API just for filtering products.
+
 This documentation describes how to request data from the API and how to interpret the response.
 
-### Product Base URL
+## Installation
+Before you're getting started make sure you have `.env` file ◽ check `.env.example`.
+
+### `git clone`
+clone the repository _https://github.com/Ilyasse-Fouaide/store-API.git_.
+
+### `cd/store-API`
+change directory to store-API.
+
+### `npm run dev`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## API Endpoint
 **_`GET`_** - `http://localhost:5000/api/v1/products`
 
 *Responses:*
