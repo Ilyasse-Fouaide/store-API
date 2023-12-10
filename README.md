@@ -1,20 +1,15 @@
-<center>
-
 # Store API
-
-</center>
 
 This api is built with NodeJS, ExpressJS, MongoDB. It enables to make an advanced filtering using a **_REST API_**
 
 This documentation describes how to request data from the API and how to interpret the response.
 
 ### Product Base URL
-> <span style="font-size: 18px; font-weight: 900">`GET`</span> `http://localhost:5000/api/v1/products`
+> **_`GET`_** `http://localhost:5000/api/v1/products`
 
 *Responses:*
 
-* <span style="color: #22c55e; font-weight: 900; background: #052e16; padding-inline: 5px; border-radius: 3px">200</span> 
-Return Search results for products.
+* `200` Return Search results for products.
 
 ```ts
 {
@@ -42,8 +37,7 @@ Return Search results for products.
 }
 ```
 
-* <span style="color: #ef4444; font-weight: 900; background: #450a0a; padding-inline: 5px; border-radius: 3px">400</span> 
-Error: Bas request. When some params doesn't match.
+* `400` Error: Bas request. When some params doesn't match.
 
 ```ts
 {
@@ -77,15 +71,15 @@ By default the limit number of the response is `25` if the given query is higher
 
 ### Examples
 Get all products matching `bra`
-> `http://localhost:5000/api/v1/products?search=bra...`
+> `/api/v1/products?search=bra...`
 
 Get all product that have _price_ `<` _500_ ◽ _rating_ `=>` _4_.  
 _you can filter with **numericFilter=...**_
 
-> `http://localhost:5000/api/v1/products?search=bra&numericFilter=price<50,rating>=4...`
+> `/api/v1/products?search=bra&numericFilter=price<50,rating>=4...`
 
 Select query:
-> `http://localhost:5000/api/v1/products?select=name,price...`
+> `/api/v1/products?select=name,price...`
 
 ```ts
 {
