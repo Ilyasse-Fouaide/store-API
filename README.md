@@ -62,7 +62,6 @@ This documentation describes how to request data from the API and how to interpr
 | `limit=`   | Limit the response number   | _Number_  |
 | `page=`    | Page Number                 | _Number_  |
 | `select=`  | N/A                         | _String_  |
-|            |                             |           |
 
 <br />
 <br />
