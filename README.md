@@ -123,7 +123,7 @@ _e.g, Response:_
 }
 ```
 ## Dependencies
-- nodemon
-- dotenv
-- express
-- mongoose
+- [X] nodemon
+- [X] dotenv
+- [X] express
+- [X] mongoose
