@@ -1,0 +1,25 @@
+version: "2.4"
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo_container
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo:/data/db
+
+  store-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: store_app_conatainer
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/STORE
+    ports:
+      - 0:5000
+    depends_on:
+      - mongo
+
+volumes:
+  mongo:

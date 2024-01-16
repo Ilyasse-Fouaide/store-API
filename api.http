@@ -1,0 +1,8 @@
+### 3277 is the port of the docker container
+
+POST http://localhost:32774/api/v1/products
+Content-Type: application/json
+
+###
+
+GET http://localhost:32774/api/v1/products 
